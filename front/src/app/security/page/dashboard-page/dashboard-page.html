@@ -1,0 +1,10 @@
+<div id="dashboard-wrapper">
+  <h2>Dashboard</h2>
+
+  @if (user(); as u) {
+    <p>Bienvenue {{ u.username }}</p>
+    <p>Email : {{ u.mail }}</p>
+  }
+
+  <button (click)="logout()">se déconnecter</button>
+</div>
