@@ -40,4 +40,15 @@ export class SecurityService {
     const { password, ...result } = credential;
     return { token, credential: result };
   }
+
+  async detail(id: string): Promise<Partial<Credential>> {
+    const credential = await this.credentialRepository.findOneBy({
+      credential_id: id,
+    });
+    if (!credential) {
+      throw new UnauthorizedException();
+    }
+    const { password, ...result } = credential;
+    return result;
+  }
 }
