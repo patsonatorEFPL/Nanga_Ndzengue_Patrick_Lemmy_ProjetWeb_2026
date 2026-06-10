@@ -1,0 +1,16 @@
+#dashboard-wrapper {
+  max-width: 480px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: Arial, sans-serif;
+}
+
+#dashboard-wrapper h2 {
+  margin-top: 0;
+}
+
+#dashboard-wrapper button {
+  padding: 6px 12px;
+}

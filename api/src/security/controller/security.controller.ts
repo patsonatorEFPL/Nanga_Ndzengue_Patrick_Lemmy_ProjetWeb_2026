@@ -6,7 +6,7 @@ import { Public, User } from '../metadata';
 import { Credential } from '../entities';
 
 @ApiBearerAuth('access-token')
-@ApiTags('Account')
+@ApiTags('Security')
 @Controller('security')
 export class SecurityController {
   constructor(private readonly service: SecurityService) {}

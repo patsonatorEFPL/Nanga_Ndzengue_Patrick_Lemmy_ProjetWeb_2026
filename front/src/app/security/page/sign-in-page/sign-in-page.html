@@ -13,6 +13,8 @@
   <button (click)="signIn()">se connecter</button>
 
   @if (error()) {
-    <p>{{ error() }}</p>
+    <p class="error">{{ error() }}</p>
   }
+
+  <p><a routerLink="/sign-up">Créer un compte</a></p>
 </div>

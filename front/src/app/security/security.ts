@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Service } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Credential, Session, SignInPayload, SignupPayload } from './model';
 
-@Service()
+@Injectable({ providedIn: 'root' })
 export class Security {
   private readonly http = inject(HttpClient);
   private readonly url = 'http://localhost:3000/api/security';

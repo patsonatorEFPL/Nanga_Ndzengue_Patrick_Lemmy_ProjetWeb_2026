@@ -1,4 +1,4 @@
-#sign-in-wrapper {
+#sign-up-wrapper {
   max-width: 320px;
   margin: 40px auto;
   padding: 20px;
@@ -7,25 +7,29 @@
   font-family: Arial, sans-serif;
 }
 
-#sign-in-wrapper h2 {
+#sign-up-wrapper h2 {
   margin-top: 0;
 }
 
-#sign-in-wrapper label {
+#sign-up-wrapper label {
   display: block;
   margin-bottom: 4px;
 }
 
-#sign-in-wrapper input {
+#sign-up-wrapper input {
   width: 100%;
   padding: 6px;
   box-sizing: border-box;
 }
 
-#sign-in-wrapper button {
+#sign-up-wrapper button {
   padding: 6px 12px;
 }
 
-#sign-in-wrapper .error {
+#sign-up-wrapper .error {
   color: red;
+}
+
+#sign-up-wrapper .success {
+  color: green;
 }

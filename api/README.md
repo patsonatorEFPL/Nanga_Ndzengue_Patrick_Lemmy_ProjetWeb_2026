@@ -1,31 +1,31 @@
-# API — Projet de Développement Web
+# api
 
-API REST en NestJS : inscription et connexion, avec mot de passe haché (bcrypt) et
-token JWT. Les données sont stockées dans PostgreSQL via TypeORM.
+Backend NestJS.
 
 ## Prérequis
 
 - Node.js
-- PostgreSQL avec une base projweb
+- PostgreSQL (base `projweb`)
 
-## Installation
+## Installer
 
-
+```
 npm install
-
+```
 
 ## Lancer
 
-
+```
 npm run start:dev
-
+```
 
 - API : http://localhost:3000/api
-- Documentation Swagger : http://localhost:3000/docs
+- Swagger : http://localhost:3000/docs
 
-## Routes principales
+## Routes
 
-- POST /api/security/sign-up — inscription
-- POST /api/security/sign-in — connexion (renvoie un token)
+- POST `/api/security/sign-up`
+- POST `/api/security/sign-in`
+- GET `/api/security/me`
 
-La configuration (base de données, secret JWT) se trouve dans le fichier .env .
+La config se trouve dans `.env`.

@@ -1,12 +1,12 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Security } from '../../security';
 import { Token } from '../../token';
 
 @Component({
   selector: 'app-sign-in-page',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './sign-in-page.html',
   styleUrl: './sign-in-page.css',
 })
