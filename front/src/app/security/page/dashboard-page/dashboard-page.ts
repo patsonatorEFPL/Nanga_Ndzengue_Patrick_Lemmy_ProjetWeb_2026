@@ -1,12 +1,12 @@
 import { Component, inject, signal } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Security } from '../../security';
 import { Token } from '../../token';
 import { Credential } from '../../model';
 
 @Component({
   selector: 'app-dashboard-page',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './dashboard-page.html',
   styleUrl: './dashboard-page.css',
 })

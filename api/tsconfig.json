@@ -16,7 +16,11 @@
     "baseUrl": "./",
     "paths": {
       "@common/*": ["src/common/*"],
-      "@security/*": ["src/security/*"]
+      "@security/*": ["src/security/*"],
+      "@parking": ["src/module/parking"],
+      "@parking/*": ["src/module/parking/*"],
+      "@ticket": ["src/module/ticket"],
+      "@ticket/*": ["src/module/ticket/*"]
     },
     "incremental": true,
     "skipLibCheck": true,

@@ -1,0 +1,30 @@
+<h2>Liste des parkings</h2>
+
+@if (error()) {
+  <p style="color:red">{{ error() }}</p>
+}
+
+@if (parkings().length === 0) {
+  <p>Aucun parking.</p>
+} @else {
+  <table>
+    <tr>
+      <th>Nom</th>
+      <th>Adresse</th>
+      <th>Capacite</th>
+      <th>Tarif</th>
+      <th>Tickets</th>
+    </tr>
+    @for (p of parkings(); track p.parking_id) {
+      <tr>
+        <td>{{ p.nom }}</td>
+        <td>{{ p.adresse }}</td>
+        <td>{{ p.capacite }}</td>
+        <td>{{ p.tarif_horaire }}</td>
+        <td>{{ p.tickets.length }}</td>
+      </tr>
+    }
+  </table>
+}
+
+<a routerLink="/dashboard">retour</a>
