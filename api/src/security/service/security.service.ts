@@ -1,54 +1,60 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { JwtService } from '@nestjs/jwt';
 import { Repository } from 'typeorm';
-import { Credential } from '../entities';
-import { SignInPayload, SignupPayload } from '../model';
-import { comparePassword, encryptPassword } from '../security.crypt';
+import { isNil } from 'lodash';
+import { CredentialEntity } from '../data/entity/credential.entity';
+import { SignInPayload } from '../data/payload/sign-in.payload';
+import { SignUpPayload } from '../data/payload/sign-up.payload';
+import { UserNotFoundException } from '../data/exception/user-not-found.exception';
+import { BadCredentialsException } from '../data/exception/bad-credentials.exception';
+import { TokenService } from './token.service';
+import { comparePassword, encryptPassword } from '../utils/password.utils';
 
 @Injectable()
 export class SecurityService {
   constructor(
-    @InjectRepository(Credential)
-    private readonly credentialRepository: Repository<Credential>,
-    private readonly jwtService: JwtService,
+    @InjectRepository(CredentialEntity)
+    private credentialRepository: Repository<CredentialEntity>,
+    private tokenService: TokenService,
   ) {}
 
-  async signUp(payload: SignupPayload): Promise<Partial<Credential>> {
-    const credential = new Credential();
+  async signUp(payload: SignUpPayload) {
+    const credential = new CredentialEntity();
     credential.username = payload.username;
     credential.mail = payload.mail;
     credential.password = await encryptPassword(payload.password);
-    const { password, ...saved } = await this.credentialRepository.save(credential);
-    return saved;
+    const saved = await this.credentialRepository.save(credential);
+    const { password, ...rest } = saved;
+    return rest;
   }
 
   async signIn(payload: SignInPayload) {
     const credential = await this.credentialRepository.findOneBy({
       username: payload.username,
     });
-    if (
-      !credential ||
-      !(await comparePassword(payload.password, credential.password))
-    ) {
-      throw new UnauthorizedException('Identifiants invalides');
+    if (isNil(credential)) {
+      throw new UserNotFoundException();
     }
-    const token = await this.jwtService.signAsync({
-      sub: credential.credential_id,
-      username: credential.username,
-    });
-    const { password, ...result } = credential;
-    return { token, credential: result };
+    if (!(await comparePassword(payload.password, credential.password))) {
+      throw new BadCredentialsException();
+    }
+    const tokens = await this.tokenService.getTokens(credential);
+    const { password, ...cred } = tokens!.credential;
+    return {
+      token: tokens!.token,
+      refreshToken: tokens!.refreshToken,
+      credential: cred,
+    };
   }
 
-  async detail(id: string): Promise<Partial<Credential>> {
+  async detail(id: string) {
     const credential = await this.credentialRepository.findOneBy({
       credential_id: id,
     });
-    if (!credential) {
-      throw new UnauthorizedException();
+    if (isNil(credential)) {
+      throw new UserNotFoundException();
     }
-    const { password, ...result } = credential;
-    return result;
+    const { password, ...rest } = credential;
+    return rest;
   }
 }

@@ -2,7 +2,7 @@ import { Controller, Get } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { AppService } from './app.service';
 import { AppControllerHelloWorld } from './app.swagger';
-import { Public } from './security/metadata';
+import { Public } from './security/decorator/public.decorator';
 
 @ApiTags('Route de base')
 @Controller()

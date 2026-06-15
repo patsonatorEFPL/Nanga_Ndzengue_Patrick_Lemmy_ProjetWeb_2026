@@ -3,7 +3,7 @@ export interface SignInPayload {
   password: string;
 }
 
-export interface SignupPayload {
+export interface SignUpPayload {
   username: string;
   password: string;
   mail: string;

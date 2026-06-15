@@ -3,10 +3,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { SecurityModule } from './security/security.module';
-import { ormConfig } from './orm.config';
+import { configManager } from './common/config/config-manager';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(ormConfig), SecurityModule],
+  imports: [
+    TypeOrmModule.forRoot(configManager.getTypeOrmConfig()),
+    SecurityModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

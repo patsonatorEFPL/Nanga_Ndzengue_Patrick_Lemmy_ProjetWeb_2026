@@ -1,35 +1,27 @@
-import 'dotenv/config';
-import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
+import { AppExceptionFilter } from './common/filter/app-exception.filter';
+import { ResponseInterceptor } from './common/interceptor/response.interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api');
   app.enableCors();
 
+  app.useGlobalFilters(new AppExceptionFilter());
+  app.useGlobalInterceptors(new ResponseInterceptor());
+
   const config = new DocumentBuilder()
     .setTitle('NestJS API')
-    .setDescription('NestJS swagger document')
     .setVersion('1.0')
     .addBearerAuth(
-      {
-        description: 'Please enter token',
-        name: 'Authorization',
-        bearerFormat: 'Bearer',
-        scheme: 'Bearer',
-        type: 'http',
-        in: 'Header',
-      },
+      { type: 'http', scheme: 'Bearer', bearerFormat: 'Bearer', in: 'Header', name: 'Authorization' },
       'access-token',
     )
     .build();
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('docs', app, document);
+  SwaggerModule.setup('docs', app, SwaggerModule.createDocument(app, config));
 
-  const port = process.env.PORT ?? 3000;
-  await app.listen(port);
-  Logger.log(`Server is started on http://localhost:${port}`, 'Main');
+  await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();

@@ -9,7 +9,7 @@ import {
 import { ulid } from 'ulid';
 
 @Entity()
-export class Credential {
+export class CredentialEntity {
   @PrimaryColumn('varchar', { length: 26 })
   credential_id: string;
 
@@ -35,7 +35,7 @@ export class Credential {
   updated: Date;
 
   @BeforeInsert()
-  generateId(): void {
+  generateId() {
     if (!this.credential_id) {
       this.credential_id = ulid();
     }
