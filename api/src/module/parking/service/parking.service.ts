@@ -13,4 +13,8 @@ export class ParkingService {
   list() {
     return this.repository.find();
   }
+
+  detail(id: string) {
+    return this.repository.findOneBy({ parking_id: id });
+  }
 }

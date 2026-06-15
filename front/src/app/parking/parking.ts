@@ -19,4 +19,10 @@ export class ParkingService {
       .get<ApiResponse<Parking[]>>(`${this.url}/list`)
       .pipe(map((res) => res.data));
   }
+
+  detail(id: string): Observable<Parking> {
+    return this.http
+      .get<ApiResponse<Parking>>(`${this.url}/detail/${id}`)
+      .pipe(map((res) => res.data));
+  }
 }

@@ -17,7 +17,7 @@
     </tr>
     @for (p of parkings(); track p.parking_id) {
       <tr>
-        <td>{{ p.nom }}</td>
+        <td><a [routerLink]="['/parking', p.parking_id]">{{ p.nom }}</a></td>
         <td>{{ p.adresse }}</td>
         <td>{{ p.capacite }}</td>
         <td>{{ p.tarif_horaire }}</td>

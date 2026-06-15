@@ -1,0 +1,19 @@
+@if (parking(); as p) {
+  <h2>{{ p.nom }}</h2>
+  <p>Adresse : {{ p.adresse }}</p>
+  <p>Capacite : {{ p.capacite }}</p>
+  <p>Tarif : {{ p.tarif_horaire }}</p>
+
+  <h3>Tickets</h3>
+  @if (p.tickets.length === 0) {
+    <p>Pas de tickets.</p>
+  } @else {
+    <ul>
+      @for (t of p.tickets; track t.ticket_id) {
+        <li>{{ t.immatriculation }} - {{ t.entree }}</li>
+      }
+    </ul>
+  }
+}
+
+<a routerLink="/parking">retour</a>
