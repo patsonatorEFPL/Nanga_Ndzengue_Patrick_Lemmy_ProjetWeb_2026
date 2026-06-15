@@ -14,3 +14,10 @@ export interface Parking {
   tarif_horaire: number;
   tickets: Ticket[];
 }
+
+export interface ParkingPayload {
+  nom: string;
+  adresse: string;
+  capacite: number;
+  tarif_horaire: number;
+}

@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Parking } from '../data/entity/parking.entity';
+import { ParkingPayload } from '../data/payload/parking.payload';
 
 @Injectable()
 export class ParkingService {
@@ -16,5 +17,9 @@ export class ParkingService {
 
   detail(id: string) {
     return this.repository.findOneBy({ parking_id: id });
+  }
+
+  create(payload: ParkingPayload) {
+    return this.repository.save(this.repository.create(payload));
   }
 }

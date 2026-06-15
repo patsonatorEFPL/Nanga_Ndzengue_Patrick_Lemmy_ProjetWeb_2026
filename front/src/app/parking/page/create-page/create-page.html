@@ -1,0 +1,9 @@
+<h2>Nouveau parking</h2>
+
+<p>Nom : <input [(ngModel)]="nom" name="nom"></p>
+<p>Adresse : <input [(ngModel)]="adresse" name="adresse"></p>
+<p>Capacite : <input type="number" [(ngModel)]="capacite" name="capacite"></p>
+<p>Tarif : <input type="number" [(ngModel)]="tarif_horaire" name="tarif"></p>
+
+<button (click)="create()">creer</button>
+<a routerLink="/parking">retour</a>
