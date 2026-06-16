@@ -6,6 +6,7 @@ import { ParkingListPage } from './parking/page/list-page/list-page';
 import { ParkingDetailPage } from './parking/page/detail-page/detail-page';
 import { ParkingCreatePage } from './parking/page/create-page/create-page';
 import { ParkingEditPage } from './parking/page/edit-page/edit-page';
+import { MainFallBackPage } from './shared/ui/page/main-fall-back-page/main-fall-back-page';
 import { authGuard } from './security/auth-guard';
 
 export const routes: Routes = [
@@ -16,4 +17,5 @@ export const routes: Routes = [
   { path: 'parking/new', component: ParkingCreatePage, canActivate: [authGuard] },
   { path: 'parking/:id/edit', component: ParkingEditPage, canActivate: [authGuard] },
   { path: 'parking/:id', component: ParkingDetailPage, canActivate: [authGuard] },
+  { path: '**', component: MainFallBackPage },
 ];
