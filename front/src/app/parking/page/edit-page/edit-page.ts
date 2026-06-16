@@ -14,6 +14,7 @@ export class ParkingEditPage {
   private router = inject(Router);
 
   id = this.route.snapshot.paramMap.get('id')!;
+  loaded = signal(false);
   nom = signal('');
   adresse = signal('');
   capacite = signal(0);
@@ -25,6 +26,7 @@ export class ParkingEditPage {
       this.adresse.set(p.adresse);
       this.capacite.set(p.capacite);
       this.tarif_horaire.set(p.tarif_horaire);
+      this.loaded.set(true);
     });
   }
 

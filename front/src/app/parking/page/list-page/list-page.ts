@@ -11,7 +11,7 @@ import { Parking } from '../../model';
 export class ParkingListPage {
   private parkingService = inject(ParkingService);
 
-  parkings = signal<Parking[]>([]);
+  parkings = signal<Parking[] | undefined>(undefined);
   error = signal('');
 
   constructor() {

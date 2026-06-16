@@ -4,6 +4,8 @@
   @if (user(); as u) {
     <p>Bienvenue {{ u.username }}</p>
     <p>Email : {{ u.mail }}</p>
+  } @else {
+    <p>Chargement...</p>
   }
 
   <p><a routerLink="/parking">voir les parkings</a></p>

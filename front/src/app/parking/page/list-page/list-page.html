@@ -4,27 +4,31 @@
   <p style="color:red">{{ error() }}</p>
 }
 
-@if (parkings().length === 0) {
-  <p>Aucun parking.</p>
-} @else {
-  <table>
-    <tr>
-      <th>Nom</th>
-      <th>Adresse</th>
-      <th>Capacite</th>
-      <th>Tarif</th>
-      <th>Tickets</th>
-    </tr>
-    @for (p of parkings(); track p.parking_id) {
+@if (parkings(); as list) {
+  @if (list.length === 0) {
+    <p>Aucun parking.</p>
+  } @else {
+    <table>
       <tr>
-        <td><a [routerLink]="['/parking', p.parking_id]">{{ p.nom }}</a></td>
-        <td>{{ p.adresse }}</td>
-        <td>{{ p.capacite }}</td>
-        <td>{{ p.tarif_horaire }}</td>
-        <td>{{ p.tickets.length }}</td>
+        <th>Nom</th>
+        <th>Adresse</th>
+        <th>Capacite</th>
+        <th>Tarif</th>
+        <th>Tickets</th>
       </tr>
-    }
-  </table>
+      @for (p of list; track p.parking_id) {
+        <tr>
+          <td><a [routerLink]="['/parking', p.parking_id]">{{ p.nom }}</a></td>
+          <td>{{ p.adresse }}</td>
+          <td>{{ p.capacite }}</td>
+          <td>{{ p.tarif_horaire }}</td>
+          <td>{{ p.tickets.length }}</td>
+        </tr>
+      }
+    </table>
+  }
+} @else {
+  <p>Chargement...</p>
 }
 
 <p><a routerLink="/parking/new">nouveau parking</a></p>
