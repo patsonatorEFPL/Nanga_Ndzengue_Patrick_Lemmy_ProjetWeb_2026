@@ -25,4 +25,10 @@ export class ParkingService {
       .post<{ data: Parking }>(`${this.url}/create`, payload)
       .pipe(map((r) => r.data));
   }
+
+  update(id: string, payload: ParkingPayload) {
+    return this.http
+      .post<{ data: Parking }>(`${this.url}/update/${id}`, payload)
+      .pipe(map((r) => r.data));
+  }
 }

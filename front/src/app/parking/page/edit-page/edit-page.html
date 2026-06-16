@@ -1,0 +1,9 @@
+<h2>Modifier parking</h2>
+
+<p>Nom : <input [ngModel]="nom()" (ngModelChange)="nom.set($event)" name="nom"></p>
+<p>Adresse : <input [ngModel]="adresse()" (ngModelChange)="adresse.set($event)" name="adresse"></p>
+<p>Capacite : <input type="number" [ngModel]="capacite()" (ngModelChange)="capacite.set($event)" name="capacite"></p>
+<p>Tarif : <input type="number" [ngModel]="tarif_horaire()" (ngModelChange)="tarif_horaire.set($event)" name="tarif"></p>
+
+<button (click)="save()">enregistrer</button>
+<a [routerLink]="['/parking', id]">retour</a>

@@ -20,4 +20,9 @@ export class ParkingController {
   create(@Body() payload: ParkingPayload) {
     return this.service.create(payload);
   }
+
+  @Post('update/:id')
+  update(@Param('id') id: string, @Body() payload: ParkingPayload) {
+    return this.service.update(id, payload);
+  }
 }

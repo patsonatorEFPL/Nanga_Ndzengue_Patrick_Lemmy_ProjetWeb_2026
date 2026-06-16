@@ -22,4 +22,9 @@ export class ParkingService {
   create(payload: ParkingPayload) {
     return this.repository.save(this.repository.create(payload));
   }
+
+  async update(id: string, payload: ParkingPayload) {
+    await this.repository.update({ parking_id: id }, payload);
+    return this.repository.findOneBy({ parking_id: id });
+  }
 }
