@@ -31,4 +31,8 @@ export class ParkingService {
       .post<{ data: Parking }>(`${this.url}/update/${id}`, payload)
       .pipe(map((r) => r.data));
   }
+
+  delete(id: string) {
+    return this.http.delete(`${this.url}/delete/${id}`);
+  }
 }

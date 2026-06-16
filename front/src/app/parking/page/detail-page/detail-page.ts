@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ParkingService } from '../../parking';
 import { Parking } from '../../model';
 
@@ -11,11 +11,16 @@ import { Parking } from '../../model';
 export class ParkingDetailPage {
   private parkingService = inject(ParkingService);
   private route = inject(ActivatedRoute);
+  private router = inject(Router);
 
+  id = this.route.snapshot.paramMap.get('id')!;
   parking = signal<Parking | null>(null);
 
   constructor() {
-    const id = this.route.snapshot.paramMap.get('id')!;
-    this.parkingService.detail(id).subscribe((p) => this.parking.set(p));
+    this.parkingService.detail(this.id).subscribe((p) => this.parking.set(p));
+  }
+
+  remove() {
+    this.parkingService.delete(this.id).subscribe(() => this.router.navigate(['parking']));
   }
 }

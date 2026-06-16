@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post, Body } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Delete } from '@nestjs/common';
 import { ParkingService } from '../service/parking.service';
 import { ParkingPayload } from '../data/payload/parking.payload';
 
@@ -24,5 +24,10 @@ export class ParkingController {
   @Post('update/:id')
   update(@Param('id') id: string, @Body() payload: ParkingPayload) {
     return this.service.update(id, payload);
+  }
+
+  @Delete('delete/:id')
+  delete(@Param('id') id: string) {
+    return this.service.delete(id);
   }
 }

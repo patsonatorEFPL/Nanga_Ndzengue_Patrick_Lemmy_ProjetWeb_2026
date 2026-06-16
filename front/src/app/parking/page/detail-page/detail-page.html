@@ -15,7 +15,10 @@
     </ul>
   }
 
-  <p><a [routerLink]="['/parking', p.parking_id, 'edit']">modifier</a></p>
+  <p>
+    <a [routerLink]="['/parking', p.parking_id, 'edit']">modifier</a>
+    <button (click)="remove()">supprimer</button>
+  </p>
 }
 
 <a routerLink="/parking">retour</a>

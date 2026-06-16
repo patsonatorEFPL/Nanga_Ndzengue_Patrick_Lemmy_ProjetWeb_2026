@@ -27,4 +27,8 @@ export class ParkingService {
     await this.repository.update({ parking_id: id }, payload);
     return this.repository.findOneBy({ parking_id: id });
   }
+
+  delete(id: string) {
+    return this.repository.delete({ parking_id: id });
+  }
 }
