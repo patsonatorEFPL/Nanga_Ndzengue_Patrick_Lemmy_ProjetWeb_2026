@@ -7,7 +7,6 @@ import { Security } from '../../security';
   selector: 'app-sign-up-page',
   imports: [FormsModule],
   templateUrl: './sign-up-page.html',
-  styleUrl: './sign-up-page.css',
 })
 export class SignUpPage {
   private readonly security = inject(Security);

@@ -15,12 +15,11 @@
     </ul>
   }
 
-  <p>
+  <div class="actions">
     <a [routerLink]="['/parking', p.parking_id, 'edit']">modifier</a>
     <button (click)="remove()">supprimer</button>
-  </p>
+    <a routerLink="/parking">retour</a>
+  </div>
 } @else {
   <p>Chargement...</p>
 }
-
-<a routerLink="/parking">retour</a>

@@ -1,1 +1,17 @@
-<router-outlet />
+@if (authenticated()) {
+  <div class="layout">
+    <div class="sidebar">
+      <h3>Parking</h3>
+      <a routerLink="/dashboard">Dashboard</a>
+      <a routerLink="/parking">Parkings</a>
+      <button (click)="logout()">Deconnexion</button>
+    </div>
+    <div class="main">
+      <router-outlet />
+    </div>
+  </div>
+} @else {
+  <div class="auth">
+    <router-outlet />
+  </div>
+}

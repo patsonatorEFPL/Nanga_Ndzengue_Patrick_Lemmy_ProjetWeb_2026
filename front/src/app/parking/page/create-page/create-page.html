@@ -5,5 +5,7 @@
 <p>Capacite : <input type="number" [(ngModel)]="capacite" name="capacite"></p>
 <p>Tarif : <input type="number" [(ngModel)]="tarif_horaire" name="tarif"></p>
 
-<button (click)="create()">creer</button>
-<a routerLink="/parking">retour</a>
+<div class="actions">
+  <button (click)="create()">creer</button>
+  <a routerLink="/parking">retour</a>
+</div>

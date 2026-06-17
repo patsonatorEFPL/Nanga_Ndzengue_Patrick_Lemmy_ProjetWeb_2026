@@ -1,27 +1,25 @@
-<div id="sign-up-wrapper">
-  <h2>Inscription</h2>
+<h2>Inscription</h2>
 
-  <p>
-    <label>Identifiant</label>
-    <input type="text" name="username" [(ngModel)]="username" />
-  </p>
-  <p>
-    <label>Email</label>
-    <input type="email" name="mail" [(ngModel)]="mail" />
-  </p>
-  <p>
-    <label>Mot de passe</label>
-    <input type="password" name="password" [(ngModel)]="password" />
-  </p>
+<p>
+  <label>Identifiant</label>
+  <input type="text" name="username" [(ngModel)]="username" />
+</p>
+<p>
+  <label>Email</label>
+  <input type="email" name="mail" [(ngModel)]="mail" />
+</p>
+<p>
+  <label>Mot de passe</label>
+  <input type="password" name="password" [(ngModel)]="password" />
+</p>
 
-  <button (click)="signUp()">créer un compte</button>
+<button (click)="signUp()">créer un compte</button>
 
-  @if (error()) {
-    <p class="error">{{ error() }}</p>
-  }
-  @if (success()) {
-    <p class="success">{{ success() }}</p>
-  }
+@if (error()) {
+  <p style="color:red">{{ error() }}</p>
+}
+@if (success()) {
+  <p style="color:green">{{ success() }}</p>
+}
 
-  <p><a routerLink="/">Déjà un compte ? Se connecter</a></p>
-</div>
+<p><a routerLink="/">Déjà un compte ? Se connecter</a></p>

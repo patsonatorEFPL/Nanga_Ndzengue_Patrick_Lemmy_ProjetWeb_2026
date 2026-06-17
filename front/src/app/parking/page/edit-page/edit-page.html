@@ -6,9 +6,10 @@
   <p>Capacite : <input type="number" [ngModel]="capacite()" (ngModelChange)="capacite.set($event)" name="capacite"></p>
   <p>Tarif : <input type="number" [ngModel]="tarif_horaire()" (ngModelChange)="tarif_horaire.set($event)" name="tarif"></p>
 
-  <button (click)="save()">enregistrer</button>
+  <div class="actions">
+    <button (click)="save()">enregistrer</button>
+    <a [routerLink]="['/parking', id]">retour</a>
+  </div>
 } @else {
   <p>Chargement...</p>
 }
-
-<a [routerLink]="['/parking', id]">retour</a>

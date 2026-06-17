@@ -8,7 +8,6 @@ import { Token } from '../../token';
   selector: 'app-sign-in-page',
   imports: [FormsModule, RouterLink],
   templateUrl: './sign-in-page.html',
-  styleUrl: './sign-in-page.css',
 })
 export class SignInPage {
   private readonly security = inject(Security);
