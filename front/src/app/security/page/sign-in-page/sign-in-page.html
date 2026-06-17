@@ -1,18 +1,24 @@
-<h2>Connexion</h2>
+<section>
+  <h1>Connexion</h1>
+  <div class="input-box">
+    <input type="text" placeholder="Nom utilisateur" name="username" [(ngModel)]="username">
+    <i class="fa-solid fa-user"></i>
+  </div>
+  <div class="input-box">
+    <input type="password" placeholder="Mot de passe" name="password" [(ngModel)]="password">
+    <i class="fa-solid fa-lock"></i>
+  </div>
+  <div class="remember-forgot">
+    <label><input type="checkbox"> Se souvenir de moi</label>
+    <a href="">Mot de passe oublié ?</a>
+  </div>
+  <button class="login-btn" (click)="signIn()">Se connecter</button>
 
-<p>
-  <label>Identifiant</label>
-  <input type="text" name="username" [(ngModel)]="username" />
-</p>
-<p>
-  <label>Mot de passe</label>
-  <input type="password" name="password" [(ngModel)]="password" />
-</p>
+  @if (error()) {
+    <p style="color:#ff6b6b;text-align:center;margin-top:10px">{{ error() }}</p>
+  }
 
-<button (click)="signIn()">se connecter</button>
-
-@if (error()) {
-  <p style="color:red">{{ error() }}</p>
-}
-
-<p><a routerLink="/sign-up">Créer un compte</a></p>
+  <div class="register-link">
+    <p>Pas de compte ? <a routerLink="/sign-up">Inscription</a></p>
+  </div>
+</section>
