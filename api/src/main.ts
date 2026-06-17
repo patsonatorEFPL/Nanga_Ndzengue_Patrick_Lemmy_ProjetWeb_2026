@@ -15,10 +15,6 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('NestJS API')
     .setVersion('1.0')
-    .addBearerAuth(
-      { type: 'http', scheme: 'Bearer', bearerFormat: 'Bearer', in: 'Header', name: 'Authorization' },
-      'access-token',
-    )
     .build();
   SwaggerModule.setup('docs', app, SwaggerModule.createDocument(app, config));
 

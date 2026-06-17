@@ -1,5 +1,4 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { SecurityService } from '../service/security.service';
 import { TokenService } from '../service/token.service';
 import { SignInPayload } from '../data/payload/sign-in.payload';
@@ -9,8 +8,6 @@ import { Public } from '../decorator/public.decorator';
 import { User } from '../decorator/user.decorator';
 import { CredentialEntity } from '../data/entity/credential.entity';
 
-@ApiBearerAuth('access-token')
-@ApiTags('Security')
 @Controller('security')
 export class SecurityController {
   constructor(
