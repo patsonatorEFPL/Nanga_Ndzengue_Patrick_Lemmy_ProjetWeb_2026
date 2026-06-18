@@ -1,11 +1,20 @@
-<h2>Nouveau parking</h2>
+<div class="page-heading">
+  <span><a routerLink="/parking">Parkings</a> / Nouveau</span>
+  <h3>Nouveau parking</h3>
+</div>
 
-<p>Nom : <input [(ngModel)]="nom" name="nom"></p>
-<p>Adresse : <input [(ngModel)]="adresse" name="adresse"></p>
-<p>Capacite : <input type="number" [(ngModel)]="capacite" name="capacite"></p>
-<p>Tarif : <input type="number" [(ngModel)]="tarif_horaire" name="tarif"></p>
+<div class="form-wrapper">
+  <p><input placeholder="Nom" [(ngModel)]="nom" name="nom"></p>
+  <p><input placeholder="Adresse" [(ngModel)]="adresse" name="adresse"></p>
+  <p><input type="number" placeholder="Capacite" [(ngModel)]="capacite" name="capacite"></p>
+  <p><input type="number" placeholder="Tarif horaire" [(ngModel)]="tarif_horaire" name="tarif"></p>
 
-<div class="actions">
-  <button (click)="create()">creer</button>
-  <a routerLink="/parking">retour</a>
+  <div class="actions">
+    <div class="main-button">
+      <button (click)="create()">Creer</button>
+    </div>
+    <div class="main-button">
+      <a routerLink="/parking">Retour</a>
+    </div>
+  </div>
 </div>

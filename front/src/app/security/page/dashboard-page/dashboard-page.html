@@ -1,13 +1,14 @@
-<section class="home">
-  <div class="home__left">
-    @if (user(); as u) {
-      <h1 class="title">Bienvenue {{ u.username }}.</h1>
-      <p>Connecté avec {{ u.mail }}. Gere tes parkings depuis cette interface.</p>
-      <div class="home__button">
-        <a routerLink="/parking" class="btn">VOIR LES PARKINGS</a>
-      </div>
-    } @else {
-      <p>Chargement...</p>
-    }
+<div class="page-heading">
+  @if (user(); as u) {
+    <span><a routerLink="/parking">Mes parkings</a></span>
+    <h3>Bienvenue {{ u.username }}</h3>
+  } @else {
+    <h3>Chargement...</h3>
+  }
+</div>
+
+<div class="section">
+  <div class="main-button">
+    <a routerLink="/parking">Voir mes parkings</a>
   </div>
-</section>
+</div>

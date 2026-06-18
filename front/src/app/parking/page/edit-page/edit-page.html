@@ -1,15 +1,24 @@
-<h2>Modifier parking</h2>
+<div class="page-heading">
+  <span><a [routerLink]="['/parking', id]">{{ id }}</a> / Modifier</span>
+  <h3>Modifier le parking</h3>
+</div>
 
-@if (loaded()) {
-  <p>Nom : <input [ngModel]="nom()" (ngModelChange)="nom.set($event)" name="nom"></p>
-  <p>Adresse : <input [ngModel]="adresse()" (ngModelChange)="adresse.set($event)" name="adresse"></p>
-  <p>Capacite : <input type="number" [ngModel]="capacite()" (ngModelChange)="capacite.set($event)" name="capacite"></p>
-  <p>Tarif : <input type="number" [ngModel]="tarif_horaire()" (ngModelChange)="tarif_horaire.set($event)" name="tarif"></p>
+<div class="form-wrapper">
+  @if (loaded()) {
+    <p><input placeholder="Nom" [ngModel]="nom()" (ngModelChange)="nom.set($event)" name="nom"></p>
+    <p><input placeholder="Adresse" [ngModel]="adresse()" (ngModelChange)="adresse.set($event)" name="adresse"></p>
+    <p><input type="number" placeholder="Capacite" [ngModel]="capacite()" (ngModelChange)="capacite.set($event)" name="capacite"></p>
+    <p><input type="number" placeholder="Tarif" [ngModel]="tarif_horaire()" (ngModelChange)="tarif_horaire.set($event)" name="tarif"></p>
 
-  <div class="actions">
-    <button (click)="save()">enregistrer</button>
-    <a [routerLink]="['/parking', id]">retour</a>
-  </div>
-} @else {
-  <p>Chargement...</p>
-}
+    <div class="actions">
+      <div class="main-button">
+        <button (click)="save()">Enregistrer</button>
+      </div>
+      <div class="main-button">
+        <a [routerLink]="['/parking', id]">Retour</a>
+      </div>
+    </div>
+  } @else {
+    <p>Chargement...</p>
+  }
+</div>

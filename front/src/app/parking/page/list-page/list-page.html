@@ -1,36 +1,45 @@
-<h2>Liste des parkings</h2>
+<div class="page-heading">
+  <span><a routerLink="/dashboard">Dashboard</a> / Parkings</span>
+  <h3>Liste des parkings</h3>
+</div>
 
-@if (error()) {
-  <p style="color:red">{{ error() }}</p>
-}
-
-@if (parkings(); as list) {
-  @if (list.length === 0) {
-    <p>Aucun parking.</p>
-  } @else {
-    <table>
-      <tr>
-        <th>Nom</th>
-        <th>Adresse</th>
-        <th>Capacite</th>
-        <th>Tarif</th>
-        <th>Tickets</th>
-      </tr>
-      @for (p of list; track p.parking_id) {
-        <tr>
-          <td><a [routerLink]="['/parking', p.parking_id]">{{ p.nom }}</a></td>
-          <td>{{ p.adresse }}</td>
-          <td>{{ p.capacite }}</td>
-          <td>{{ p.tarif_horaire }}</td>
-          <td>{{ p.tickets.length }}</td>
-        </tr>
-      }
-    </table>
+<div class="section properties">
+  @if (error()) {
+    <p style="color:red">{{ error() }}</p>
   }
-} @else {
-  <p>Chargement...</p>
-}
 
-<div class="actions">
-  <a routerLink="/parking/new">nouveau parking</a>
+  @if (parkings(); as list) {
+    @if (list.length === 0) {
+      <p>Aucun parking pour le moment.</p>
+    } @else {
+      <div class="properties-grid">
+        @for (p of list; track p.parking_id) {
+          <div class="item">
+            <a [routerLink]="['/parking', p.parking_id]">
+              <img src="https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=600&q=80" alt="parking">
+            </a>
+            <span class="category">Parking</span>
+            <h6>{{ p.tarif_horaire }} €/h</h6>
+            <h4><a [routerLink]="['/parking', p.parking_id]">{{ p.nom }}</a></h4>
+            <ul>
+              <li>Adresse: <span>{{ p.adresse }}</span></li>
+              <li>Capacite: <span>{{ p.capacite }}</span></li>
+              <li>Tickets: <span>{{ p.tickets.length }}</span></li>
+            </ul>
+            <div class="main-button">
+              <a [routerLink]="['/parking', p.parking_id]">Voir le detail</a>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  } @else {
+    <p>Chargement...</p>
+  }
+
+  <div class="actions">
+    <div class="main-button">
+      <a routerLink="/parking/new">Nouveau parking</a>
+    </div>
+  </div>
 </div>

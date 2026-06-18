@@ -1,25 +1,42 @@
 @if (parking(); as p) {
-  <h2>{{ p.nom }}</h2>
-  <p>Adresse : {{ p.adresse }}</p>
-  <p>Capacite : {{ p.capacite }}</p>
-  <p>Tarif : {{ p.tarif_horaire }}</p>
+  <div class="page-heading">
+    <span><a routerLink="/parking">Parkings</a> / {{ p.nom }}</span>
+    <h3>{{ p.nom }}</h3>
+  </div>
 
-  <h3>Tickets</h3>
-  @if (p.tickets.length === 0) {
-    <p>Pas de tickets.</p>
-  } @else {
+  <div class="detail-info">
+    <img src="https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=1200&q=80" alt="parking">
+    <h2>Informations</h2>
     <ul>
-      @for (t of p.tickets; track t.ticket_id) {
-        <li>{{ t.immatriculation }} - {{ t.entree }}</li>
-      }
+      <li>Adresse: <span>{{ p.adresse }}</span></li>
+      <li>Capacite: <span>{{ p.capacite }}</span></li>
+      <li>Tarif: <span>{{ p.tarif_horaire }} €/h</span></li>
+      <li>Tickets actifs: <span>{{ p.tickets.length }}</span></li>
     </ul>
-  }
 
-  <div class="actions">
-    <a [routerLink]="['/parking', p.parking_id, 'edit']">modifier</a>
-    <button (click)="remove()">supprimer</button>
-    <a routerLink="/parking">retour</a>
+    <h2>Tickets</h2>
+    @if (p.tickets.length === 0) {
+      <p>Pas de tickets pour le moment.</p>
+    } @else {
+      <ul>
+        @for (t of p.tickets; track t.ticket_id) {
+          <li>{{ t.immatriculation }} - entree {{ t.entree }}</li>
+        }
+      </ul>
+    }
+
+    <div class="actions">
+      <div class="main-button">
+        <a [routerLink]="['/parking', p.parking_id, 'edit']">Modifier</a>
+      </div>
+      <div class="main-button">
+        <button (click)="remove()">Supprimer</button>
+      </div>
+      <div class="main-button">
+        <a routerLink="/parking">Retour</a>
+      </div>
+    </div>
   </div>
 } @else {
-  <p>Chargement...</p>
+  <p style="padding:60px">Chargement...</p>
 }
