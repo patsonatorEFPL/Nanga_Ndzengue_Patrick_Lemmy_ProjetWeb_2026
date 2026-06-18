@@ -1,25 +1,28 @@
-<h2>Inscription</h2>
+<section>
+  <h1>Inscription</h1>
+  <div class="input-box">
+    <input type="text" placeholder="Identifiant" name="username" [(ngModel)]="username">
+    <i class="fa-solid fa-user"></i>
+  </div>
+  <div class="input-box">
+    <input type="email" placeholder="Email" name="mail" [(ngModel)]="mail">
+    <i class="fa-solid fa-envelope"></i>
+  </div>
+  <div class="input-box">
+    <input type="password" placeholder="Mot de passe" name="password" [(ngModel)]="password">
+    <i class="fa-solid fa-lock"></i>
+  </div>
 
-<p>
-  <label>Identifiant</label>
-  <input type="text" name="username" [(ngModel)]="username" />
-</p>
-<p>
-  <label>Email</label>
-  <input type="email" name="mail" [(ngModel)]="mail" />
-</p>
-<p>
-  <label>Mot de passe</label>
-  <input type="password" name="password" [(ngModel)]="password" />
-</p>
+  <button class="login-btn" (click)="signUp()">Creer un compte</button>
 
-<button (click)="signUp()">créer un compte</button>
+  @if (error()) {
+    <p style="color:#ff6b6b;text-align:center;margin-top:10px">{{ error() }}</p>
+  }
+  @if (success()) {
+    <p style="color:#7cffa0;text-align:center;margin-top:10px">{{ success() }}</p>
+  }
 
-@if (error()) {
-  <p style="color:red">{{ error() }}</p>
-}
-@if (success()) {
-  <p style="color:green">{{ success() }}</p>
-}
-
-<p><a routerLink="/">Déjà un compte ? Se connecter</a></p>
+  <div class="register-link">
+    <p>Deja un compte ? <a routerLink="/">Se connecter</a></p>
+  </div>
+</section>

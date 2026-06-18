@@ -1,15 +1,17 @@
 @if (authenticated()) {
-  <div class="layout">
-    <div class="sidebar">
-      <h3>Parking</h3>
-      <a routerLink="/dashboard">Dashboard</a>
-      <a routerLink="/parking">Parkings</a>
-      <button (click)="logout()">Deconnexion</button>
+  <header>
+    <a class="header__logo" routerLink="/dashboard">PARKING.</a>
+    <ul class="header__menu">
+      <li><a routerLink="/dashboard">HOME</a></li>
+      <li><a routerLink="/parking">PARKINGS</a></li>
+    </ul>
+    <div class="header__buttons">
+      <a (click)="logout()">DECONNEXION</a>
     </div>
-    <div class="main">
-      <router-outlet />
-    </div>
-  </div>
+  </header>
+  <main>
+    <router-outlet />
+  </main>
 } @else {
   <router-outlet />
 }

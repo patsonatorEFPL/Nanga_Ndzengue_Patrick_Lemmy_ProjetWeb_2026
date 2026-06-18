@@ -1,12 +1,13 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Security } from '../../security';
 
 @Component({
   selector: 'app-sign-up-page',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './sign-up-page.html',
+  styleUrl: './sign-up-page.css',
 })
 export class SignUpPage {
   private readonly security = inject(Security);

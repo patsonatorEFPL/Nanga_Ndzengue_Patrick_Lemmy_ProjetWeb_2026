@@ -1,10 +1,11 @@
 import { Component, inject, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Security } from '../../security';
 import { Credential } from '../../model';
 
 @Component({
   selector: 'app-dashboard-page',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './dashboard-page.html',
 })
 export class DashboardPage {

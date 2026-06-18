@@ -1,68 +1,96 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f0f0f0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f5e9d4;
+  color: #222;
+}
+
+h1 {
+  font-size: 50px;
+  font-weight: 500;
+  margin-bottom: 20px;
 }
 
 h2 {
-  margin-top: 0;
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
 a {
-  color: blue;
+  color: #222;
 }
 
-button {
-  background: black;
-  color: white;
-  border: none;
-  padding: 5px 10px;
+button, .btn {
+  background-color: transparent;
+  color: #222;
+  border: 1px solid #222;
+  padding: 12px 30px;
+  font-size: 14px;
+  letter-spacing: 2px;
   cursor: pointer;
+  font-family: inherit;
+  text-decoration: none;
+  display: inline-block;
+}
+
+button:hover, .btn:hover {
+  background-color: #222;
+  color: #f5e9d4;
 }
 
 input {
-  border: 1px solid #ccc;
-  padding: 5px;
+  background-color: transparent;
+  border: 1px solid #222;
+  padding: 10px;
+  font-family: inherit;
+  color: #222;
+  font-size: 14px;
+}
+
+input:focus {
+  outline: none;
+  border-width: 2px;
 }
 
 table {
-  background: white;
-  border: 1px solid #ccc;
-  border-collapse: collapse;
   width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
 }
 
 th, td {
-  padding: 8px;
   text-align: left;
-  border-bottom: 1px solid #eee;
+  padding: 12px 8px;
+  border-bottom: 1px solid #222;
 }
 
 th {
-  background: #f5f5f5;
+  font-weight: 500;
+  letter-spacing: 1px;
+  font-size: 13px;
+  text-transform: uppercase;
 }
 
-.auth {
-  width: 300px;
-  margin: 80px auto;
-  background: white;
-  padding: 20px;
-  border: 1px solid #ccc;
-}
-
-.auth input {
-  width: 100%;
-  margin-top: 4px;
+p {
+  margin: 6px 0;
 }
 
 .actions {
-  margin-top: 15px;
-}
-
-.actions a {
-  margin-right: 10px;
-}
-
-.actions button {
-  margin-right: 10px;
+  margin-top: 25px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
 }
