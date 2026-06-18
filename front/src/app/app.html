@@ -1,17 +1,53 @@
 @if (authenticated()) {
-  <header>
+  <header class="header-area">
     <a class="header__logo" routerLink="/dashboard">PARKING.</a>
     <ul class="header__menu">
-      <li><a routerLink="/dashboard">HOME</a></li>
-      <li><a routerLink="/parking">PARKINGS</a></li>
+      <li><a routerLink="/dashboard">Home</a></li>
+      <li><a routerLink="/parking">Parkings</a></li>
     </ul>
     <div class="header__buttons">
-      <a (click)="logout()">DECONNEXION</a>
+      <a (click)="logout()"><i class="fa fa-right-from-bracket"></i> Deconnexion</a>
     </div>
   </header>
-  <main>
-    <router-outlet />
-  </main>
+
+  <router-outlet />
+
+  <footer>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <a class="footer__logo" routerLink="/dashboard">PARKING.</a>
+        <p>Votre partenaire de confiance pour la gestion simple et moderne de vos parkings.</p>
+        <ul class="social-links">
+          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+          <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Explorer</h5>
+        <ul class="links">
+          <li><a routerLink="/dashboard">Accueil</a></li>
+          <li><a routerLink="/parking">Mes parkings</a></li>
+          <li><a routerLink="/parking/new">Nouveau parking</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul class="contact-info">
+          <li><i class="fa fa-envelope"></i> contact@parking.com</li>
+          <li><i class="fa fa-location-dot"></i> Rue de la Loi 16, 1000 Bruxelles, Belgique</li>
+          <li><i class="fa fa-clock"></i> Lun - Ven : 9h00 - 18h00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Parking Co. Tous droits reserves.</p>
+      <ul>
+        <li><a href="#">Politique de confidentialite</a></li>
+        <li><a href="#">Conditions d'utilisation</a></li>
+      </ul>
+    </div>
+  </footer>
 } @else {
   <router-outlet />
 }

@@ -12,6 +12,12 @@ html, body {
   color: #1e1e1e;
 }
 
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 a {
   text-decoration: none;
   color: #1e1e1e;
@@ -95,6 +101,12 @@ input {
   background-color: #fafafa;
   border-radius: 10px;
   padding: 30px;
+  transition: all .3s;
+}
+
+.properties .item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
 .properties .item img {
