@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { Security } from '../../security';
+import { Security } from '../../../../security/security';
 
 @Component({
   selector: 'app-sign-up-page',
@@ -27,7 +27,7 @@ export class SignUpPage {
       .subscribe({
         next: () => {
           this.success.set('Compte créé, vous pouvez vous connecter.');
-          this.router.navigate(['']);
+          this.router.navigate(['auth']);
         },
         error: () => this.error.set('Inscription impossible'),
       });

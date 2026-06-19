@@ -18,6 +18,6 @@ export class App {
 
   logout() {
     this.token.clear();
-    this.router.navigate(['']);
+    this.router.navigate(['auth']);
   }
 }
