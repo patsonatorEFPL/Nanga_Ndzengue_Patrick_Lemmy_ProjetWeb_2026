@@ -23,6 +23,7 @@ desktop.ini
 
 .idea/
 .vscode/
+.claude/
 *.swp
 *.sublime-workspace
 
