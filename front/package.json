@@ -1,6 +1,6 @@
 {
   "name": "front",
-  "version": "1.0.0-projet1",
+  "version": "1.0.1",
   "author": "Nanga Ndzengue Patrick Lemmy",
   "scripts": {
     "ng": "ng",
