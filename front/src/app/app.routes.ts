@@ -6,12 +6,14 @@ import { ParkingCreatePage } from './parking/page/create-page/create-page';
 import { ParkingEditPage } from './parking/page/edit-page/edit-page';
 import { MainFallBackPage } from './shared/ui/page/main-fall-back-page/main-fall-back-page';
 import { authGuard } from './security/auth-guard';
+import { anonGuard } from './security/anon-guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
   {
     path: 'auth',
     loadChildren: () => import('./feature/auth/auth.routes').then((m) => m.authRoutes),
+    canActivate: [anonGuard],
   },
   { path: 'dashboard', component: DashboardPage, canActivate: [authGuard] },
   { path: 'parking', component: ParkingListPage, canActivate: [authGuard] },
